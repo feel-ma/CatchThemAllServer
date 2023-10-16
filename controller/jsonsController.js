@@ -87,6 +87,8 @@ const handleTenRemove = asyncHandler(async (req, res) => {
 
 const deleteJson = asyncHandler(async (req, res) => {
   const { pID } = req.body;
+  console.log('pID:', pID);
+  
   const json = await Jsons.findByIdAndDelete(pID);
   console.log("I have delated Project",json);
 
