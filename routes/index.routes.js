@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { createJson, getAllJsons, handleTen, handleTenRemove, resetPeopleAdded, resetCounter} = require("../controller/jsonsController.js");
+const { createJson, getAllJsons, handleTen, handleTenRemove, resetPeopleAdded, resetCounter, deleteJson} = require("../controller/jsonsController.js");
 const { getUser,setLimitAlert, resetLimitAlert, removedCounter} = require("../controller/userController.js");
 const { setDay, setMonth , setStartWeek} = require("../controller/timeController.js");
 
@@ -16,14 +16,14 @@ router.route("/jsons").get(getAllJsons);
 console.log('Request reached /dashboard endpoint');
 router.route("/jsons").post( createJson);
 console.log('Request reached /dashboard endpoint');
+router.route("/jsons").delete(deleteJson);
+console.log('Request reached /dashboard endpoint');
 router.route("/jsonspeopleadded/").put(handleTen);
 console.log('Request reached /dashboard endpoint');
 router.route("/jsonspeopleremoved/").put(handleTenRemove);
 console.log('Request reached /dashboard endpoint');
 router.route("/jsons/removed").put(resetPeopleAdded);
 console.log('Request reached /dashboard endpoint');
-/* router.route("/jsons/removedcount").put(removedCounter);
-console.log('Request reached /dashboard endpoint'); */
 router.route("/jsons/resetcounter").put(resetCounter);
 console.log('Request reached /dashboard endpoint');
 
